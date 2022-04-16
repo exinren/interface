@@ -8,34 +8,7 @@ import (
 type MySQL struct {}
 
 func (*MySQL) GenSelect (db *DbData) string {
-	if db == nil {
-		return ""
-	}
-	s := make([]string, 0)
-	s = append(s, "SELECT ")
-	fields := strings.Split(db.Fields, ",")
-	for _, f := range fields {
-		s = append(s, DbMapLeft[db.DbType])
-		s = append(s, f)
-		s = append(s, DbMapRight[db.DbType])
-		s = append(s, ",")
-	}
-	s = s[0: len(s) - 1]
-	s = append(s, " FROM ")
-	s = append(s, DbMapLeft[db.DbType])
-	s = append(s, db.Table)
-	s = append(s, DbMapRight[db.DbType])
-	s = append(s, " WHERE ")
-	if db.Where == nil {
-		s = append(s, "1=1")
-	} else {
-		s = append(s, db.GetWhere())
-	}
-	if db.OrderBy != nil {
-		s = append(s, " ORDER BY ")
-		s = append(s,db.GetOrderBy())
-	}
-	return strings.Join(s, "")
+	return Select(db)
 }
 
 func (this *MySQL) GenPage(db *DbData) string {

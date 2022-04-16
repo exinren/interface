@@ -7,7 +7,7 @@ import (
 
 type MsSQL struct {}
 
-func (*MsSQL) GenSelect (db *DbData) string {
+func Select(db *DbData) string {
 	if db == nil {
 		return ""
 	}
@@ -36,6 +36,10 @@ func (*MsSQL) GenSelect (db *DbData) string {
 		s = append(s,db.GetOrderBy())
 	}
 	return strings.Join(s, "")
+}
+
+func (*MsSQL) GenSelect (db *DbData) string {
+	return Select(db)
 }
 
 func (this *MsSQL) GenPage(db *DbData) string {
