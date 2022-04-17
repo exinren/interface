@@ -3,7 +3,7 @@ package sql
 type Order string
 
 const (
-	ASC Order = "ASC"
+	ASC  Order = "ASC"
 	DESC Order = "DESC"
 )
 

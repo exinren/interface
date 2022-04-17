@@ -14,8 +14,8 @@ const (
 type OrAnd string
 
 const (
-	OR OrAnd = " OR "
-	AND OrAnd = " AND "
+	OR   OrAnd = " OR "
+	AND  OrAnd = " AND "
 	NONE OrAnd = ""
 )
 

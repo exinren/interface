@@ -23,7 +23,7 @@ func NewDbData(table, field string) *DbData {
 func (db *DbData) GetWhere() string {
 	s := make([]string, 0)
 	for _, v := range db.Where {
-		s = append(s,DbMapLeft[db.DbType])
+		s = append(s, DbMapLeft[db.DbType])
 		s = append(s, v.Field)
 		s = append(s, DbMapRight[db.DbType])
 		s = append(s, string(v.SqlOp))
